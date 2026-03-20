@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html class="scroll-smooth dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shayesta Haqjo | Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        /*Color Palette
+                        --primary:       #FF4C60  — Bold coral-red, used for CTAs and highlights. Energetic, modern.
+                        --accent-purple: #6C6CE5  — Calm indigo, used for education/design sections. Thoughtful.
+                        --accent-yellow: #F9D74C  — Warm gold, used for extracurriculars. Optimistic, bright.
+                        Together the palette feels vibrant but purposeful — reflecting ambition and creativity.*/
+
+                        primary: "#FF4C60",
+                        "background-light": "#F9F9FF",
+                        "background-dark": "#353353",
+                        "card-dark": "#302f4e",
+                        "accent-purple": "#6C6CE5",
+                        "accent-yellow": "#F9D74C",
+                    },
+                    fontFamily: {
+                        display: ["Rubik", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "20px",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Tailwind component styles -->
+    <style type="text/tailwindcss">
+        body {
+            font-family: "Rubik", sans-serif;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif;
+        }
+        .sidebar-icon {
+            @apply flex items-center justify-center w-10 h-10 transition-colors duration-200 text-gray-400 hover:text-primary;
+        }
+        .cert-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cert-card:hover {
+            transform: scale(1.02) translateY(-8px);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .map-container {
+            background:
+                linear-gradient(rgba(53, 51, 83, 0.8), rgba(53, 51, 83, 0.8)),
+                url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=800");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <style>
+        /* ── Mobile navbar ── */
+        .bs-mobile-nav {
+            background-color: #302f4e;
+            font-family: "Rubik", sans-serif;
+            z-index: 1055;
+        }
+        html:not(.dark) .bs-mobile-nav {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .bs-mobile-nav .navbar-brand {
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #FF4C60 !important;
+        }
+        .bs-mobile-nav .navbar-toggler {
+            border: none;
+            box-shadow: none;
+            padding: 4px 8px;
+        }
+        .bs-mobile-nav .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        html:not(.dark) .bs-mobile-nav .navbar-toggler-icon {
+            filter: invert(0);
+        }
+        #navMenu {
+            background-color: #302f4e;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        html:not(.dark) #navMenu {
+            background-color: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .bs-mobile-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: 0.95rem;
+            padding: 0.65rem 0.75rem !important;
+            border-radius: 8px;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        html:not(.dark) .bs-mobile-nav .nav-link {
+            color: #353353 !important;
+        }
+        .bs-mobile-nav .nav-link:hover {
+            color: #FF4C60 !important;
+            background-color: rgba(255, 76, 96, 0.08) !important;
+        }
+        .bs-mobile-nav .contact-pill {
+            background-color: #FF4C60 !important;
+            color: #fff !important;
+            border-radius: 50px !important;
+            padding: 0.4rem 1.2rem !important;
+        }
+        .bs-mobile-nav .contact-pill:hover {
+            background-color: #e6394d !important;
+        }
+        @media (max-width: 1023px) {
+            body { padding-top: 58px; }
+        }
+
+        /* ── Certificate cards ── */
+        .bs-cert-highlight-card {
+            border-radius: 24px !important;
+            border: none !important;
+            font-family: "Rubik", sans-serif;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .bs-cert-highlight-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18) !important;
+        }
+        .bs-cert-highlight-card .card-title {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .bs-cert-highlight-card .card-footer {
+            background: transparent !important;
+            border-top: none !important;
+        }
+
+        .border-primary { border-color: #FF4C60 !important; }
+        .text-primary   { color: #FF4C60 !important; }
+        .bg-primary     { background-color: #FF4C60 !important; }
+
+        .skill-box { background-color: #ffffff; }
+        html.dark .skill-box {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border-color: rgba(107, 114, 128, 0.2) !important;
+        }
+
+        .card-inner {
+            cursor: pointer;
+            overflow: hidden;
+            height: 260px;
+        }
+        @media (min-width: 768px) {
+            .card-inner { height: 280px; }
+        }
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+        .card-inner:hover .card-overlay {
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .card-img {
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        .card-inner:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        html.dark #aboutCard,
+        html.dark #experience .rounded-3xl,
+        html.dark #contact .rounded-3xl,
+        html.dark aside {
+            background-color: #302f4e !important;
+            border-color: rgba(55, 65, 81, 0.3) !important;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-white selection:bg-primary selection:text-white">
+
+    <!-- MOBILE NAVBAR -->
+    <nav class="navbar fixed-top bs-mobile-nav d-lg-none" id="bsNavbar">
+        <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+            <a class="navbar-brand" href="#home">S.</a>
+            <button id="navBtn" class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div id="navMenu" style="display:none; width:100%;">
+            <ul class="navbar-nav px-4 pb-3 pt-1 gap-1">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                <li class="nav-item"><a class="nav-link" href="#works">Works</a></li>
+                <li class="nav-item pt-1"><a class="nav-link contact-pill d-inline-block" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="fixed left-0 top-0 h-screen w-20 flex flex-col items-center py-8 border-r border-gray-100 dark:border-gray-700 bg-white dark:bg-background-dark z-50 hidden lg:flex">
+        <div class="mb-auto">
+            <span class="text-3xl font-bold text-primary">S.</span>
+        </div>
+        <nav class="flex flex-col gap-6">
+            <a class="sidebar-icon" href="#home"         title="Home">         <span class="material-icons-outlined">home</span></a>
+            <a class="sidebar-icon" href="#about"        title="About">        <span class="material-icons-outlined">person_outline</span></a>
+            <a class="sidebar-icon" href="#experience"   title="Experience">   <span class="material-icons-outlined">school</span></a>
+            <a class="sidebar-icon" href="#certificates" title="Certificates"> <span class="material-icons-outlined">verified</span></a>
+            <a class="sidebar-icon" href="#works"        title="Works">        <span class="material-icons-outlined">layers</span></a>
+            <a class="sidebar-icon" href="#contact"      title="Contact">      <span class="material-icons-outlined">chat_bubble_outline</span></a>
+        </nav>
+    </aside>
+
+    <main class="lg:ml-20 min-h-screen">
+
+        <!-- HOME -->
+        <section class="relative h-[105vh] flex flex-col items-center justify-center overflow-hidden px-4" id="home">
+            <div class="absolute top-20 left-20 w-4 h-4 border-2 border-accent-yellow rounded-full"></div>
+            <div class="absolute top-40 right-40 w-6 h-6 border-2 border-primary rotate-45"></div>
+            <div class="absolute bottom-20 left-1/4 w-3 h-3 bg-accent-purple rounded-sm rotate-12"></div>
+            <div class="z-10 text-center max-w-2xl">
+                <div class="mb-6 inline-block p-1 border-4 border-primary rounded-full">
+                    <img alt="Shayesta Haqjo" class="w-24 h-24 rounded-full bg-accent-yellow" src="./Profile_image.png" />
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Shayesta Haqjo</h1>
+                <p class="text-[16px] md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed font-light">
+                    Aspiring <span class="text-primary font-medium">Computer Science Student</span>
+                    passionate about <span class="text-accent-purple font-medium">innovation</span> and creating
+                    <span class="text-primary font-medium">positive impact</span>.
+                </p>
+                <div class="flex justify-center gap-6 mb-10">
+                    <a class="text-gray-400 hover:text-primary transition-colors" href="https://www.linkedin.com/in/shayesta-haqjo" target="_blank" rel="noopener" title="LinkedIn">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a class="text-gray-400 hover:text-primary transition-colors" href="https://github.com/shayestahaqjo-0" target="_blank" rel="noopener" title="GitHub">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a class="text-gray-400 hover:text-primary transition-colors" href="mailto:shayestahaqjo@email.com" title="Email Me">
+                        <span class="material-symbols-outlined">alternate_email</span>
+                    </a>
+                </div>
+                <a class="bg-primary hover:bg-opacity-90 text-white px-10 py-3 rounded-full font-medium transition-all transform hover:scale-105 inline-block shadow-lg shadow-primary/20" href="#contact">Get in Touch</a>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="py-16 px-6 md:px-12 max-w-6xl mx-auto" id="about">
+            <h2 class="text-3xl font-bold mb-2 relative inline-block">
+                About Me
+                <span class="absolute -bottom-2 left-0 w-12 h-1 bg-primary"></span>
+            </h2>
+            <p class="text-xs text-gray-400 mb-8 uppercase tracking-widest block mt-2">A Little About My Journey</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white dark:bg-card-dark p-8 rounded-3xl shadow-xl dark:shadow-none border border-gray-100 dark:border-gray-700/50" id="aboutCard">
+                <div class="space-y-4">
+                    <p class="leading-relaxed text-gray-600 dark:text-gray-300 text-[13px]">Growing up Hazara in Afghanistan, I quickly realized that education and opportunities were not guaranteed for girls like me. Schools were closed, resources were limited, and discrimination based on ethnicity, gender, and class made even basic learning a challenge.</p>
+                    <p class="leading-relaxed text-gray-600 dark:text-gray-300 text-[13px]">I refused to accept that my future could be dictated by bias. I taught myself coding, web development, and design through online platforms, learning by experimenting, building, and solving problems. This self-directed journey taught me that technology is a powerful tool for expanding access and opportunity.</p>
+                    <p class="leading-relaxed text-gray-600 dark:text-gray-300 text-[13px]">I want to pursue Computer Science to deepen my technical skills and build educational technology that serves my community. My goal is to create accessible software solutions that open doors for students facing the same barriers I did. I approach each challenge with curiosity, persistence, and the belief that technology can drive meaningful change.</p>
+                    <a class="inline-block bg-primary text-white px-3 py-2 rounded-full text-[14px] font-medium transition-transform hover:scale-105" href="Shayesta_Resume.pdf">Download Resume</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="skill-box p-[15px] rounded-xl shadow-md border border-gray-200 dark:border-gray-500/20">
+                        <h3 class="text-accent-yellow font-bold text-[10px] uppercase tracking-widest mb-2">Programming &amp; Web</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90 transition-all hover:bg-gray-200 dark:hover:bg-gray-500/20"> Python</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90"> HTML</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90"> CSS</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">JavaScript</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90"> WordPress</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">LLMs Fundamentals</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Git &amp; GitHub</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-box p-[15px] rounded-xl shadow-md border border-gray-200 dark:border-gray-500/20">
+                        <h3 class="text-accent-purple font-bold text-[10px] uppercase tracking-widest mb-2">Design &amp; Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90"> Canva</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90"> Google Workspace</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Figma</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Miro</span>
+                        </div>
+                    </div>
+                    <div class="skill-box p-[15px] rounded-xl shadow-md border border-gray-200 dark:border-gray-500/20">
+                        <h3 class="text-primary font-bold text-[10px] uppercase tracking-widest mb-2">Languages</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">English</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Pashto</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Dari</span>
+                        </div>
+                    </div>
+                    <div class="skill-box p-[15px] rounded-xl shadow-md border border-gray-200 dark:border-gray-500/20">
+                        <h3 class="text-green-500 font-bold text-[10px] uppercase tracking-widest mb-2">Soft Skills</h3>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Communication</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Problem Solving</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Cross-Cultural Collaboration</span>
+                            <span class="flex items-center gap-1 bg-gray-100 dark:bg-gray-800/40 px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-600/30 text-[11px] text-gray-700 dark:text-white/90">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="py-16 px-6 md:px-12 max-w-6xl mx-auto" id="experience">
+            <h2 class="text-xl font-bold mb-2 relative inline-block">
+                Experience
+                <span class="absolute -bottom-2 left-0 w-12 h-1 bg-primary"></span>
+            </h2>
+            <p class="text-xs text-gray-400 mb-8 uppercase tracking-widest block mt-2">My Journey So Far</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Education column -->
+                <div>
+                    <h5 class="text-xl font-bold mb-6 flex items-center gap-2 text-accent-purple">
+                        <span class="material-symbols-outlined">school</span> Education
+                    </h5>
+                    <div class="bg-white dark:bg-card-dark p-8 rounded-3xl relative border border-gray-100 dark:border-gray-700/50 shadow-sm h-full">
+                        <div class="space-y-8 relative">
+                            <div class="absolute left-1 top-2 bottom-2 w-0.5 bg-primary/20"></div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Mar 2025 - Jan 2026</span>
+                                <h4 class="text-lg font-bold mb-2">Girls to Uni Program | <a href="https://www.kaajeducation.org/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Kaaj Education<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside ml-4">
+                                    <li>Completed intensive 10-month academic residency, earned Grade A in all courses</li>
+                                    <li>Completed courses in ESL, academic writing, digital literacy, and web development</li>
+                                    <li>Developed Kaaj Café website, a community platform for Kaaj alumni</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Feb 2025 - Oct 2025</span>
+                                <h4 class="text-lg font-bold mb-2">Professional Learning Center</h4>
+                                <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside ml-4">
+                                    <li>Gained proficiency in HTML, CSS, Python, WordPress</li>
+                                    <li>Strengthening academic writing and research skills</li>
+                                    <li>Preparing for university-level computer science study</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Apr 2024 - Dec 2025</span>
+                                <h4 class="text-lg font-bold mb-2">Thrive Afghanistan Program | <a href="https://kiron.ngo" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Kiron Open Higher Education<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside ml-4">
+                                    <li>Completed academic and digital skill modules</li>
+                                    <li>Connected with peers and mentors from 40+ countries through collaborative online projects and cross-cultural learning modules</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">March 2023 - Feb 2024</span>
+                                <h4 class="text-lg font-bold mb-2">High School | <a href="https://fw.school/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Flying Wings Online School<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside ml-4">
+                                    <li>Graduated with 3.86 GPA</li>
+                                    <li>Organized peer study sessions covering digital literacy fundamentals, supporting 25+ classmates</li>
+                                    <li>Conducted collaborative research projects in online learning environment</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">2011 - 2022</span>
+                                <h4 class="text-lg font-bold mb-2">Sajadia Number Yak High School (Grads 1-11)</h4>
+                                <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside ml-4">
+                                    <li>Graduated with 4.0 GPA</li>
+                                    <li>First Place, Province-Wide Essay Competition (Balkh, 2020)</li>
+                                    <li>British Council School Project Participant</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extracurricular column -->
+                <div>
+                    <h5 class="text-xl font-bold mb-6 flex items-center gap-2 text-accent-yellow">
+                        <span class="material-symbols-outlined">star</span> Extracurricular Activities
+                    </h5>
+                    <div class="bg-white dark:bg-card-dark p-8 rounded-3xl relative border border-gray-100 dark:border-gray-700/50 shadow-sm h-full">
+                        <div class="space-y-8 relative">
+                            <div class="absolute left-1 top-2 bottom-2 w-0.5 bg-primary/20"></div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">2026 - Present</span>
+                                <h4 class="text-lg font-bold mb-2">Learner Advisory Board | <a href="https://kiron.ngo" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Kiron Open Higher Education<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside">
+                                    <li>Addressed gaps in learner experience by representing student needs in structured feedback cycles.</li>
+                                    <li>Reviewed course accessibility and platform usability, contributing to improvements affecting 197,000+ learners globally.</li>
+                                    <li>Collaborated with international academic and product teams to support inclusive, student-centered program design.</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Mar 2025 - Nov 2025</span>
+                                <h4 class="text-lg font-bold mb-2">Co-Founder &amp; Technology Lead | Rebuild with STEAM</h4>
+                                <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside">
+                                    <li>Identified lack of access to digital education among refugee and marginalized youth and co-founded an initiative to address it.</li>
+                                    <li>Delivered 4+ hours per week of structured digital literacy and coding foundations.</li>
+                                    <li>Designed inclusive STEAM activities to promote creativity, problem-solving, and confidence in technology use.</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Sep 2025 - Dec 2025</span>
+                                <h4 class="text-lg font-bold mb-2">Student Coordinator | <a href="https://www.banfes.com/en/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Education Bridge for Afghanistan<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside">
+                                    <li>Coordinated TLM certification preparation for 30+ students, organizing study schedules, tracking progress, and connecting learners with appropriate resources.</li>
+                                    <li>Facilitated communication between students and instructors, ensuring timely support and maintaining student engagement throughout the certification process.</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Oct 2025 - Dec 2026</span>
+                                <h4 class="text-lg font-bold mb-2">Designer Intern | <a href="https://kabulscholarship.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Kabul Scholarship Portal<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside">
+                                    <li>Designed visual posters that simplified complex scholarship application processes, breaking down critical information barriers for Afghan students.</li>
+                                    <li>Increased accessibility to international education opportunities through clear, culturally-relevant visual communication.</li>
+                                </ul>
+                            </div>
+
+                            <div class="pl-8 relative">
+                                <span class="absolute left-0 top-1 w-2.5 h-2.5 bg-primary rounded-full -translate-x-1/2"></span>
+                                <span class="text-xs text-gray-400 block mb-2 font-medium">Aug 2024 - Oct 2024</span>
+                                <h4 class="text-lg font-bold mb-2">Teacher Assistant | <a href="https://fw.school/" target="_blank" rel="noopener" class="inline-flex items-center gap-1 transition-colors hover:text-primary hover:underline">Flying Wings<span class="material-symbols-outlined text-[14px]">open_in_new</span></a></h4>
+                                <ul class="text-[12px] text-gray-500 dark:text-gray-400 space-y-2 list-disc list-outside">
+                                    <li>Supported 100+ students in a virtual environment to maintain educational continuity during school closures.</li>
+                                    <li>Facilitated study planning and academic organization to maximize student success in online classes.</li>
+                                    <li>Enhanced peer collaboration by building support systems that improved student engagement and retention.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CERTIFICATES -->
+        <section class="py-16 px-6 md:px-12 max-w-6xl mx-auto" id="certificates">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold relative inline-block">Certificates<span class="absolute -bottom-2 left-0 w-12 h-1 bg-primary"></span></h2>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest block mt-4">Certifications &amp; Training</p>
+                </div>
+                <div class="flex gap-2">
+                    <button id="prevBtn" class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><span class="material-symbols-outlined text-xl">chevron_left</span></button>
+                    <button id="nextBtn" class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><span class="material-symbols-outlined text-xl">chevron_right</span></button>
+                </div>
+            </div>
+
+            <div id="certSlider" class="flex gap-6 overflow-x-auto hide-scrollbar pb-8 snap-x snap-mandatory scroll-px-4 scroll-smooth">
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card card bs-cert-highlight-card relative p-0 rounded-[30px] text-white shadow-xl h-full overflow-hidden" style="background-color:#6C6CE5;">
+                        <div class="card-body p-8">
+                            <div class="mb-6"><span class="material-symbols-outlined text-5xl">workspace_premium</span></div>
+                            <h3 class="card-title text-xl font-bold mb-2">Google Workspace</h3>
+                            <p class="text-sm opacity-80 mb-4">Professional Certificate</p>
+                            <p class="text-sm opacity-90 leading-relaxed mb-6">Master essential productivity tools including Google Docs, Sheets, Slides, Drive, and Calendar.</p>
+                            <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Credential ID: KM1VROYH3HOL</span>
+                        </div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm" style="background-color:rgba(108,108,229,0.95);">
+                            <a class="bg-white text-accent-purple w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://coursera.org/share/83bdb8bb8e16d5e08426330c086bcdf6"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card card bs-cert-highlight-card relative p-0 rounded-[30px] shadow-xl h-full overflow-hidden" style="background-color:#F9D74C; color:#1a1a2e;">
+                        <div class="card-body p-8">
+                            <div class="mb-6"><span class="material-symbols-outlined text-5xl">code_blocks</span></div>
+                            <h3 class="card-title text-xl font-bold mb-2">Web Development</h3>
+                            <p class="text-sm opacity-80 mb-4">Certificate of Completion</p>
+                            <p class="text-sm opacity-90 leading-relaxed mb-6">Learn web development: HTML structure, styling with CSS, and scripting with JavaScript.</p>
+                            <span class="text-xs bg-black/10 px-3 py-1 rounded-full">Credential ID: 8BLX6FPBR8IR</span>
+                        </div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm" style="background-color:rgba(249,215,76,0.95);">
+                            <a class="bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" style="color:#F9D74C;" href="https://coursera.org/share/7b018ae9268564c3bde75ed4da9dc194"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card card bs-cert-highlight-card relative p-0 rounded-[30px] text-white shadow-xl h-full overflow-hidden" style="background-color:#FF4C60;">
+                        <div class="card-body p-8">
+                            <div class="mb-6"><span class="material-symbols-outlined text-5xl">manage_search</span></div>
+                            <h3 class="card-title text-xl font-bold mb-2">Research Methods</h3>
+                            <p class="text-sm opacity-80 mb-4">University of London</p>
+                            <p class="text-sm opacity-90 leading-relaxed mb-6">Completed a foundational course on qualitative and quantitative research methods, research design, and ethical academic inquiry.</p>
+                            <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Credential ID: AT3SM08H46LR</span>
+                        </div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm" style="background-color:rgba(255,76,96,0.95);">
+                            <a class="bg-white text-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://coursera.org/share/2acfa2a07fa153182648b58c91fba5ba"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-[#10b981] p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">code</span></div>
+                        <h3 class="text-xl font-bold mb-2">Python Programming</h3>
+                        <p class="text-sm opacity-80 mb-4">21st Century Girls | 2025</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Computational thinking, data structures, and algorithm development through hands-on projects.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Projects: 5+ Applications</span>
+                        <div class="absolute inset-0 bg-white flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out p-4">
+                            <img src="./21century_skill_python_class.jpg" alt="Python Programming Certificate" class="w-full h-full object-contain rounded-lg" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-accent-purple p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">psychology_alt</span></div>
+                        <h3 class="text-xl font-bold mb-2">LLMs Fundamentals</h3>
+                        <p class="text-sm opacity-80 mb-4">Professional Certificate</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Understand large language models, their applications, and ethical considerations in AI.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Credential ID: CC-ZDPVAHHT</span>
+                        <div class="absolute inset-0 bg-accent-purple/95 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm">
+                            <a class="bg-white text-accent-purple w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://www.sololearn.com/certificates/CC-ZDPVAHHT"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-accent-yellow p-8 rounded-[30px] text-gray-800 shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">code_blocks</span></div>
+                        <h3 class="text-xl font-bold mb-2">WordPress Website Development</h3>
+                        <p class="text-sm opacity-80 mb-4">Certificate of Completion</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Develop and launch a complete website using WordPress, including themes and plugins.</p>
+                        <span class="text-xs bg-black/10 px-3 py-1 rounded-full">Credential ID: EL8UE9WPKBP2</span>
+                        <div class="absolute inset-0 bg-accent-yellow/95 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm">
+                            <a class="bg-gray-800 text-accent-yellow w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://www.coursera.org/account/accomplishments/verify/EL8UE9WPKBP2"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-primary p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">psychology</span></div>
+                        <h3 class="text-xl font-bold mb-2">Personal &amp; Professional Productivity</h3>
+                        <p class="text-sm opacity-80 mb-4">University of California, Irvine</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Completed a foundational course on personal productivity strategies, time management, and professional goal-setting.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Credential ID: FYDEARL7P77M</span>
+                        <div class="absolute inset-0 bg-primary/95 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm">
+                            <a class="bg-white text-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://coursera.org/share/5153a40d5f12c6478a4409946467abed"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-[#10b981] p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">stars</span></div>
+                        <h3 class="text-xl font-bold mb-2">Emerging Talent</h3>
+                        <p class="text-sm opacity-80 mb-4">21st Century Girls | 2025</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Selected for excellence in coding projects, digital problem-solving, and commitment to using technology for social impact.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Focus: Future-ready Skills</span>
+                        <div class="absolute inset-0 bg-white flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out p-4">
+                            <img src="./emerging_talent_Program.jpg" alt="Emerging Talent Certificate" class="w-full h-full object-contain rounded-lg" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-accent-purple p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">menu_book</span></div>
+                        <h3 class="text-xl font-bold mb-2">Academic Writing</h3>
+                        <p class="text-sm opacity-80 mb-4">University of California, Irvine</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Build strong academic writing skills for research papers, essays, and university communication.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Credential ID: NRN39FABF5RY</span>
+                        <div class="absolute inset-0 bg-accent-purple/95 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm">
+                            <a class="bg-white text-accent-purple w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://coursera.org/share/5858443b84013a5f90e78f044229c5e7"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-accent-yellow p-8 rounded-[30px] text-gray-800 shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">palette</span></div>
+                        <h3 class="text-xl font-bold mb-2">Graphic Design Basics</h3>
+                        <p class="text-sm opacity-80 mb-4">California Institute of the Arts</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Learn design principles, typography, color theory, and visual communication techniques.</p>
+                        <span class="text-xs bg-black/10 px-3 py-1 rounded-full">Credential ID: EBDC6XE4B6MK</span>
+                        <div class="absolute inset-0 bg-accent-yellow/95 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm">
+                            <a class="bg-gray-800 text-accent-yellow w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://coursera.org/share/80e1f9656a123616d4a4f8a89fa69760"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-primary p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">auto_awesome</span></div>
+                        <h3 class="text-xl font-bold mb-2">Prompt Engineering</h3>
+                        <p class="text-sm opacity-80 mb-4">Certificate of Completion</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Learn to craft effective AI prompts for optimal results in language model tasks.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Credential ID: CC-J5F7QKV6</span>
+                        <div class="absolute inset-0 bg-primary/95 flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-sm">
+                            <a class="bg-white text-primary w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 mb-3" href="https://www.sololearn.com/certificates/CC-J5F7QKV6"><span class="material-symbols-outlined text-3xl">open_in_new</span></a>
+                            <span class="font-medium">View Certificate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-[#f59e0b] p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl">trending_up</span></div>
+                        <h3 class="text-xl font-bold mb-2">Thrive Afghanistan</h3>
+                        <p class="text-sm opacity-80 mb-4">Kiron | 6-month Program</p>
+                        <p class="text-sm opacity-90 leading-relaxed mb-6">Sales strategy, digital marketing, content creation, and graphic design for women entrepreneurs.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Impact: 70+ hours training</span>
+                        <div class="absolute inset-0 bg-white flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out p-4">
+                            <img src="./thive_afg.jpg" alt="Thrive Afghanistan Certificate" class="w-full h-full object-contain rounded-lg" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-[300px] md:min-w-[350px] snap-start group">
+                    <div class="cert-card relative bg-[#0f4c5c] p-8 rounded-[30px] text-white shadow-xl h-full overflow-hidden">
+                        <div class="mb-6"><span class="material-symbols-outlined text-5xl text-yellow-400">workspace_premium</span></div>
+                        <h3 class="text-xl font-bold mb-2">Girls to Uni Graduate</h3>
+                        <p class="text-sm opacity-80 mb-4">Kaaj Education • March 2025 - Jan 2026</p>
+                        <p class="text-xs opacity-90 leading-relaxed mb-4">Selected for an intensive 10-month academic residency. Achieved <strong>Grade A</strong> honors in Digital Literacy and Advanced ESL.</p>
+                        <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Impact: 10 months / Grade A in all coursework</span>
+                        <div class="absolute inset-0 bg-[#0f4c5c] flex flex-col items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out backdrop-blur-md p-4">
+                            <p class="text-xs uppercase tracking-widest mb-4 opacity-80 font-bold">Academic Credentials</p>
+                            <div class="grid grid-cols-2 gap-3 w-full">
+                                <div>
+                                    <img src="./girls_2_uni.jpeg" alt="Certificate" class="rounded-lg border border-white/20 shadow-md transition-transform hover:scale-105" />
+                                    <span class="text-[10px] block text-center mt-1">Certificate</span>
+                                </div>
+                                <div>
+                                    <img src="./kaaj_transcript.jpeg" alt="Transcript" class="rounded-lg border border-white/20 shadow-md transition-transform hover:scale-105" />
+                                    <span class="text-[10px] block text-center mt-1">Transcript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="dotContainer" class="flex justify-center gap-3 mt-8">
+                <div class="dot w-8 h-1.5 rounded-full bg-primary transition-all duration-300"></div>
+                <div class="dot w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300"></div>
+                <div class="dot w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600 transition-all duration-300"></div>
+            </div>
+        </section>
+
+        <!-- WORKS -->
+        <section class="py-16 px-6 md:px-12 max-w-6xl mx-auto" id="works">
+            <h2 class="text-3xl font-bold mb-2 relative inline-block">Recent Works<span class="absolute -bottom-2 left-0 w-12 h-1 bg-primary"></span></h2>
+            <p class="text-xs text-gray-400 mb-8 uppercase tracking-widest block mt-2">Featured Projects</p>
+
+            <div class="flex flex-wrap gap-6 mb-10 text-sm font-medium" id="filter-buttons">
+                <button class="filter-btn text-primary border-b-2 border-primary pb-1" data-filter="all">Everything</button>
+                <button class="filter-btn text-gray-400 hover:text-primary transition-colors pb-1 border-b-2 border-transparent" data-filter="art">Art &amp; Design</button>
+                <button class="filter-btn text-gray-400 hover:text-primary transition-colors pb-1 border-b-2 border-transparent" data-filter="tech">Development</button>
+                <button class="filter-btn text-gray-400 hover:text-primary transition-colors pb-1 border-b-2 border-transparent" data-filter="leadership">Leadership &amp; Impact</button>
+            </div>
+
+            <div class="container-fluid px-0">
+                <div class="row g-4" id="projects-grid">
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card" data-category="leadership tech">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50">
+                            <img alt="Afghan Girls' Education Storybook" class="card-img w-full h-full object-cover" src="./Storybook.png" />
+                            <div class="card-overlay absolute inset-0 bg-primary/95 flex flex-col items-center justify-center p-6 text-white text-center">
+                                <span class="bg-white/20 text-xs px-3 py-1 rounded-full mb-2">Featured Project</span>
+                                <h4 class="text-[12px] mb-5">A digital storybook transforming the struggles of Afghan girls denied education into hopeful narratives of resilience. Reached 200+ readers across 10 countries within 3 months.</h4>
+                                <a class="border border-white text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-white/10 transition-colors flex items-center justify-center gap-2" href="https://heyzine.com/flip-book/f5db7b1c44.html"><span class="material-symbols-outlined text-sm">auto_stories</span>Read the Story</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card d-none" data-category="art">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50">
+                            <img alt="Cell Biology Visual Series" class="card-img w-full h-full object-cover" src="./chart.png" />
+                            <div class="card-overlay absolute inset-0 bg-accent-purple/95 flex flex-col items-center justify-center p-6 text-white text-center">
+                                <span class="bg-white/20 text-xs px-3 py-1 rounded-full mb-5">Educational Design</span>
+                                <h4 class="text-[12px] mb-5">Comprehensive visual learning materials explaining complex cell biology concepts in Dari/Pashto. Distributed to 200+ students through Sajadia Number Yak High School and peer education networks.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card" data-category="tech">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50">
+                            <img alt="Kaaj Café Website" class="card-img w-full h-full object-cover" src="./kaaj_cafe_website.png" />
+                            <div class="card-overlay absolute inset-0 bg-accent-purple/95 flex flex-col items-center justify-center p-6 text-white text-center">
+                                <span class="bg-white/20 text-xs px-3 py-1 rounded-full mb-2">Web Development</span>
+                                <h4 class="text-[12px] mb-5">Mission-driven website for Kaaj Alumni, highlighting a social-impact café where each purchase supports girls' education, digital skills, and university access.</h4>
+                                <a class="border border-white text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-white/10 transition-colors flex items-center justify-center gap-2" href="https://shayestahaqjo-0.github.io/Kaaj-Cafe-Website/"><span class="material-symbols-outlined text-sm">code</span>View Site</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card d-none" data-category="leadership">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50">
+                            <img alt="Girls For Girls Leadership" class="card-img w-full h-full object-cover" src="./girls4girls.jpg" />
+                            <div class="card-overlay absolute inset-0 bg-accent-purple/95 flex flex-col items-center justify-center p-6 text-white text-center">
+                                <span class="bg-white/20 text-xs px-3 py-1 rounded-full mb-5">Mentorship</span>
+                                <h4 class="text-[12px] mb-5">Completed intensive leadership development program focused on empowering women in tech. Now actively mentoring 10+ younger students pursuing tech careers and advocating for girls' equal access to STEM education.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card" data-category="art">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50 flex items-center justify-center">
+                            <img alt="DNA/RNA 3D Models" class="card-img w-full h-[270px] px-14" src="./DNA.png" />
+                            <div class="card-overlay absolute inset-0 bg-primary/95 flex flex-col items-center justify-center p-6 text-white text-center">
+                                <span class="bg-white/20 text-xs px-3 py-1 rounded-full mb-5">Science &amp; Design</span>
+                                <h4 class="text-[12px] mb-5">Developed physical 3D models of DNA/RNA to facilitate STEM learning in low-resource environments. Bridging the gap between biological theory and physical visualization.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card d-none" data-category="leadership">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50">
+                            <img alt="Women Ascension Leadership" class="card-img w-full h-full object-cover" src="./women_association_membership.jpg" />
+                            <div class="card-overlay absolute inset-0 bg-primary/95 flex flex-col items-center justify-center p-6 text-white text-center">
+                                <span class="bg-white/20 text-xs px-3 py-1 rounded-full mb-5">Community Impact</span>
+                                <h4 class="text-[12px] mb-5">Active member driving positive change through Women Ascension. Collaborate on programs delivering skill-building workshops, mentorship, and advocacy for gender equality in education and professional spaces.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card d-none" data-category="art">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50 flex items-center justify-center">
+                            <img alt="FEKRA Design Competition Winner" class="w-full h-full object-contain p-6" src="./graphic design.jpg" />
+                            <div class="card-overlay absolute inset-0 bg-accent-yellow/95 flex flex-col items-center justify-center p-6 text-gray-800 text-center">
+                                <span class="bg-black/10 text-xs px-3 py-1 rounded-full mb-5">Award Winner</span>
+                                <h4 class="text-[12px] mb-5">First place winner in FEKRA's national graphic design competition. Synthesized complex social advocacy into visual storytelling, demonstrating the intersection of cultural design and social impact.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4 project-card d-none" data-category="art">
+                        <div class="card-inner relative overflow-hidden rounded-3xl bg-white shadow-lg border border-gray-100 dark:border-gray-700/50">
+                            <div class="flex justify-center items-center w-full h-full bg-gray-50">
+                                <img alt="Unity &amp; Healing Art" class="w-[230px] h-[230px] object-cover" src="./art_competation.png" />
+                            </div>
+                            <div class="card-overlay absolute inset-0 bg-accent-yellow/95 flex flex-col items-center justify-center p-6 text-gray-800 text-center">
+                                <span class="bg-black/10 text-xs px-3 py-1 rounded-full mb-2">Visual Art</span>
+                                <h4 class="text-[12px] mb-5">By embedding global symbols within a soaring dove, my art transforms 'Unity &amp; Healing' from a title into a visual reality, using collective symbolism to mend trauma and inspire peace.</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-primary hover:bg-opacity-90 text-white px-10 py-3 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-primary/20">Load more projects</button>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="py-16 px-6 md:px-12 max-w-6xl mx-auto" id="contact">
+            <h2 class="text-3xl font-bold mb-2 relative inline-block">Let's Connect<span class="absolute -bottom-2 left-0 w-12 h-1 bg-primary"></span></h2>
+            <p class="text-xs text-gray-400 mb-8 uppercase tracking-widest block mt-2">Always Happy to Meet New People</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold">Let's build something great!</h3>
+                        <p class="text-gray-600 dark:text-gray-300">I'm always interested in connecting with people passionate about education, technology, and social impact. Feel free to send me an <a class="text-primary hover:underline font-medium" href="/cdn-cgi/l/email-protection#3e4d565f475b4d4a5f565f4f54517e5b535f5752105d5153">email</a>. 👋</p>
+                    </div>
+                    <div class="w-full h-64 md:h-80 rounded-3xl overflow-hidden relative border border-gray-100 dark:border-gray-700 map-container group">
+                        <div class="absolute inset-0 bg-background-dark/40 group-hover:bg-background-dark/20 transition-colors"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg mb-2 relative">
+                                <span class="material-symbols-outlined text-white animate-pulse">location_on</span>
+                                <div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-50"></div>
+                            </div>
+                            <div class="bg-white dark:bg-card-dark px-4 py-2 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700">
+                                <p class="text-xs font-bold text-center">Mazar-e-Sharif, Afghanistan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-card-dark p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-xl">
+                    <form action="https://formspree.io/f/mreqyrqd" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="md:col-span-1">
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-4">Name</label>
+                            <input name="name" type="text" required placeholder="Enter your name" class="w-full px-6 py-4 placeholder:text-[14px] rounded-full bg-background-light dark:bg-background-dark border-transparent focus:bg-white dark:focus:bg-card-dark focus:ring-2 focus:ring-primary dark:text-white placeholder-gray-400 transition-all outline-none" />
+                        </div>
+                        <div class="md:col-span-1">
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-4">Last Name</label>
+                            <input name="lastname" type="text" required placeholder="Enter your last name" class="w-full px-6 py-4 placeholder:text-[14px] rounded-full bg-background-light dark:bg-background-dark border-transparent focus:bg-white dark:focus:bg-card-dark focus:ring-2 focus:ring-primary dark:text-white placeholder-gray-400 transition-all outline-none" />
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-4">Email</label>
+                            <input name="email" type="email" required placeholder="Email address" class="w-full px-6 py-4 placeholder:text-[14px] rounded-full bg-background-light dark:bg-background-dark border-transparent focus:bg-white dark:focus:bg-card-dark focus:ring-2 focus:ring-primary dark:text-white placeholder-gray-400 transition-all outline-none" />
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-gray-400 uppercase mb-2 ml-4">Message</label>
+                            <textarea name="message" rows="4" required placeholder="How can I help you?" class="w-full px-6 py-4 placeholder:text-[14px] rounded-[30px] bg-background-light dark:bg-background-dark border-transparent focus:bg-white dark:focus:bg-card-dark focus:ring-2 focus:ring-primary dark:text-white placeholder-gray-400 transition-all outline-none"></textarea>
+                        </div>
+                        <div class="md:col-span-2 pt-2">
+                            <button type="submit" class="w-full md:w-auto bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold transition-all transform hover:scale-105 shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
+                                Send Message <span class="material-symbols-outlined text-sm">send</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center mt-12 pt-8 border-t border-gray-100 dark:border-gray-700/50">
+                <p class="text-sm text-gray-400">© 2026 Shayesta Haqjo. All rights reserved.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Dark mode toggle button -->
+    <button onclick="toggleDark()" class="fixed bottom-6 right-6 w-12 h-12 bg-white dark:bg-card-dark shadow-2xl rounded-full flex items-center justify-center text-primary z-50 hover:rotate-12 transition-transform border border-gray-100 dark:border-gray-700">
+        <span class="material-icons-outlined">dark_mode</span>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        /* ── Mobile nav toggle ── */
+        (function () {
+            var btn  = document.getElementById('navBtn');
+            var menu = document.getElementById('navMenu');
+            btn.addEventListener('click', function () {
+                menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
+            });
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () { menu.style.display = 'none'; });
+            });
+        })();
+
+        /* ── Certificate slider ── */
+        var slider    = document.getElementById('certSlider');
+        var nextBtn   = document.getElementById('nextBtn');
+        var prevBtn   = document.getElementById('prevBtn');
+        var dots      = document.querySelectorAll('.dot');
+        var cardWidth = 374; /* 350px card + 24px gap */
+
+        nextBtn.addEventListener('click', function () { slider.scrollLeft += cardWidth; });
+        prevBtn.addEventListener('click', function () { slider.scrollLeft -= cardWidth; });
+
+        slider.addEventListener('scroll', function () {
+            var scrollPct   = slider.scrollLeft / (slider.scrollWidth - slider.clientWidth);
+            var activeIndex = Math.round(scrollPct * (dots.length - 1));
+            dots.forEach(function (dot, i) {
+                if (i === activeIndex) {
+                    dot.classList.add('w-8', 'bg-primary');
+                    dot.classList.remove('w-1.5', 'bg-gray-300');
+                } else {
+                    dot.classList.remove('w-8', 'bg-primary');
+                    dot.classList.add('w-1.5', 'bg-gray-300');
+                }
+            });
+        });
+
+        /* ── Project filter ── */
+        var filterBtns = document.querySelectorAll('.filter-btn');
+        var cards      = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(function (b) {
+                    b.classList.remove('text-primary', 'border-primary');
+                    b.classList.add('text-gray-400');
+                });
+                btn.classList.remove('text-gray-400');
+                btn.classList.add('text-primary', 'border-primary');
+                var filter = btn.getAttribute('data-filter');
+                cards.forEach(function (card) {
+                    var cats = (card.getAttribute('data-category') || '').split(' ');
+                    card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+                });
+            });
+        });
+
+        document.getElementById('load-more').addEventListener('click', function () {
+            document.querySelectorAll('.project-card.d-none').forEach(function (c) {
+                c.classList.remove('d-none');
+            });
+            document.getElementById('load-more').style.display = 'none';
+        });
+
+        /* ── Dark / light mode ── */
+        function applyTheme(isDark) {
+            var darkPage  = '#353353';
+            var lightPage = '#F9F9FF';
+            var darkCard  = '#302f4e';
+            var lightCard = '#ffffff';
+
+            document.body.style.backgroundColor = isDark ? darkPage  : lightPage;
+            document.body.style.color           = isDark ? '#e5e7eb' : '#1f2937';
+
+            document.querySelectorAll('span.rounded-md').forEach(function (el) {
+                el.style.backgroundColor = isDark ? 'rgba(31,41,55,0.4)' : '#f3f4f6';
+                el.style.color           = isDark ? 'rgba(255,255,255,0.9)' : '#374151';
+                el.style.borderColor     = isDark ? 'rgba(75,85,99,0.3)'   : '#e5e7eb';
+            });
+
+            document.querySelectorAll('input, textarea').forEach(function (el) {
+                el.style.backgroundColor = isDark ? darkPage  : '#F9F9FF';
+                el.style.color           = isDark ? '#ffffff' : '#1f2937';
+            });
+
+            var toggleBtn = document.querySelector('button.fixed.bottom-6');
+            if (toggleBtn) {
+                toggleBtn.style.backgroundColor = isDark ? darkCard  : lightCard;
+                toggleBtn.style.borderColor     = isDark ? 'rgba(55,65,81,1)' : '#f3f4f6';
+            }
+        }
+
+        function toggleDark() {
+            document.documentElement.classList.toggle('dark');
+            applyTheme(document.documentElement.classList.contains('dark'));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            applyTheme(document.documentElement.classList.contains('dark'));
+        });
+    </script>
+
+</body>
+</html>
